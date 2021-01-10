@@ -3,7 +3,7 @@
 <div class="container h-100">
 
     <div class="row h-75">
-        <div class="col align-self-center h-50">
+        <div class="col align-self-end h-50">
             <div class="card text-center h-100">
                 <div class="card-body">
                     <iframe class="youtube h-100 w-100"

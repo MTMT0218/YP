@@ -30,7 +30,7 @@
 <body>
     <header>
         <nav class="navbar navbar-dark bg-dark ">
-            <a href="#" class="navbar-brand">Navbar</a>
+            <a href="{{ route('home')}}" class="navbar-brand">YP</a>
             <button class="navbar-toggler" type="button"
                 data-toggle="collapse"
                 data-target="#navmenu1"
@@ -41,9 +41,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navmenu1">
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Menu#1</a>
-                <a class="nav-item nav-link" href="#">Menu#2</a>
-                <a class="nav-item nav-link" href="#">Menu#3</a>
+                <a class="nav-item nav-link" href="#">Menu</a>
+                <a class="nav-item nav-link" href="#">Menu</a>
+                <a class="nav-item nav-link" href="#">Menu</a>
               </div>
             </div>
           </nav>

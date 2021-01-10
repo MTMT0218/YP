@@ -11,17 +11,13 @@
 |
 */
 use App\Http\Controllers\ViewController;
-
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name("home");
 
-Route::get('/header', function () {
-    return view('layouts.header');
-});
-
-Route::get('/view',"ViewController@index" )->name("view");
+Route::get('/view',"ViewController@index")->name("view");
