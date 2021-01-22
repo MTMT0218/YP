@@ -48,7 +48,7 @@
             </div>
           </nav>
     </header>
-    <main >
+    <main class="py-4">
         @yield('main')
     </main>
 </body>

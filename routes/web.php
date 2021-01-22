@@ -27,3 +27,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LogoutController@index')->name('logout');
+
+Route::get('/searchyoutube', 'SearchYoutubeController@index')->name("searchYoutube");
+
+Route::get('/searchyoutube/search', 'SearchYoutubeController@serch')->name("searchYoutube/search");
