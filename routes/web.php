@@ -31,3 +31,10 @@ Route::get('/logout', 'Auth\LogoutController@index')->name('logout');
 Route::get('/searchyoutube', 'SearchYoutubeController@index')->name("searchYoutube");
 
 Route::get('/searchyoutube/search', 'SearchYoutubeController@serch')->name("searchYoutube/search");
+
+Route::get('/registedaccount', 'RegistedAccountController@index')->name("registedAccount");
+
+Route::get('/registedaccount/search', 'RegistedAccountController@serch')->name("registedAccount/search");
+
+Route::post('/registedaccount/regist', 'RegistedAccountController@regist')->name("registedAccount/regist");
+

@@ -8,29 +8,35 @@
             <div class="card ">
                 <div class="card-header ">{{ __('YOUTUBE検索') }}</div>
                 <div class="card-body">
-                    <form action="{{route('searchYoutube/search')}}" method="get">
+                    <form action="{{route('registedAccount/search')}}" method="get">
                         @csrf
-                        <input type="search" id="keyword"
-                        placeholder="アカウント名"
+                        <input type="text" name="url"
+                        placeholder="アカウントURL"
                         name="keyword"required>
                         <input type="submit" value="検索">
                     </form>
                 </div>
             </div>
             @isset($title)
-            <div class="card mt-4">
-            <div class="card-columns ">
-                @for($i=0;$i<$sizeChannel;$i++)
-                <div class="card" style="height:15rem ;width:10rem; ">
-                    <div class="card-header text-nowrap overflow-auto"> {{$title[$i]}}</div>
+                <div class="card mt-4">
                     <div class="card-body">
-                        <img src={{$thumbnails[$i]}} class="img-fluid">
+                        <h5 class="card-title">{{$title}}</h5>
+                        <img src={{$thumbnailsURL}} class="img-fluid">
                     </div>
-                 </div>
-                 @endfor
+                </div>
+            <div class="align-self-auto m-4">
+                <form method="post" action="{{route('registedAccount/regist')}}">
+                @csrf
+                <input type="hidden" name="title" value="{{$title}}">
+                <input type="hidden" name="thumbnailsURL" value="{{$thumbnailsURL}}">
+                <input type="hidden" name="accountID" value="{{$accountID}}">
+                <input type="hidden" name="playList" value="{{$playList}}">
+                <input type="submit" class="btn btn-primary"onclick="history.back()" value="戻る"></input>
+                <input type="submit" class="btn btn-primary float-right" value="登録"></input>
+            </form>
             </div>
-        </div>
             @endisset
+
         </div>
     </div>
 </div>

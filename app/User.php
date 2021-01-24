@@ -9,7 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    public function YoutubeAccounts()
+    {
+      return $this->hasMany('App\YoutubeAccount');
+    }
     /**
      * The attributes that are mass assignable.
      *
