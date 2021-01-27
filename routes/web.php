@@ -38,3 +38,7 @@ Route::get('/registedaccount/search', 'RegistedAccountController@serch')->name("
 
 Route::post('/registedaccount/regist', 'RegistedAccountController@regist')->name("registedAccount/regist");
 
+
+Route::get('/showaccountlist','ShowAccountListController@index');
+
+

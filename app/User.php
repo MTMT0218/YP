@@ -5,13 +5,22 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    public function YoutubeAccounts()
+    public function youtubeAccounts()
     {
       return $this->hasMany('App\YoutubeAccount');
+    }
+
+    public function getPosts()
+    {
+        return $this
+            ->find(1)
+            ->posts()
+            ->get();
     }
     /**
      * The attributes that are mass assignable.
@@ -39,4 +48,10 @@ class User extends Authenticatable
     /*protected $casts = [
         'email_verified_at' => 'datetime',
     ];*/
+    public function gets($user_id)
+    {
+        return DB::table('users')->find("1");
+
+    }
+
 }

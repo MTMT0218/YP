@@ -9,8 +9,7 @@
                 <div class="card-header ">{{ __('YOUTUBE検索') }}</div>
                 <div class="card-body">
                     <form action="{{route('registedAccount/search')}}" method="get">
-                        @csrf
-                        <input type="text" name="url"
+                        <input type="text" name="url" id="url"
                         placeholder="アカウントURL"
                         name="keyword"required>
                         <input type="submit" value="検索">

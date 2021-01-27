@@ -30,6 +30,7 @@ class RegistedAccountController extends Controller
         //アカウントID取得
         $accountID="";
         preg_match('/channel\/(.*)/', $url, $temp);
+
         $accountID=$temp[1];
 
         //環境変数からAPI_KEY取得
