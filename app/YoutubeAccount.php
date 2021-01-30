@@ -7,9 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class YoutubeAccount extends Model
 {
+
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function youtubeVideos()
+    {
+      return $this->hasMany('App\YoutubeVideo',"playlist","playlist");
     }
 
     public function getYoutubeAccounts($user_id){

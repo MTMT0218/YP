@@ -41,8 +41,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navmenu1">
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Menu</a>
-                <a class="nav-item nav-link" href="#">Menu</a>
+                <a class="nav-item nav-link" href="{{route('registedAccount')}}">Youtube登録</a>
+                <a class="nav-item nav-link" href="{{route('showaccountlist')}}">登録一覧表示</a>
                 <a class="nav-item nav-link" href="#">Menu</a>
               </div>
             </div>

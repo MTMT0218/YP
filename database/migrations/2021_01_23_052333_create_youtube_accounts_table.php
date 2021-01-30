@@ -18,8 +18,8 @@ class CreateYoutubeAccountsTable extends Migration
             $table->timestamps();
             $table->bigInteger('user_id')->references('id')->on('users');
             $table->string('title');
-            $table->string('thumbnails_URL');
-            $table->string('playList');
+            $table->string('thumbnails_url');
+            $table->string('playlist');
             $table->string('account_id');
         });
     }
