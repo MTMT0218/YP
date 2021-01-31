@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class YotubeVideo extends Model
+class WatchedVideo extends Model
 {
-    //
+    protected $guarded = [];
 }

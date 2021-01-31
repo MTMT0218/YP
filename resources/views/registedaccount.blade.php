@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card ">
-                <div class="card-header ">{{ __('YOUTUBE検索') }}</div>
+                <div class="card-header ">{{ __('チャンネル登録') }}</div>
                 <div class="card-body">
                     <form action="{{route('registedAccount/search')}}" method="get">
                         <input type="text" name="url" id="url"

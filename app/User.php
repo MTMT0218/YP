@@ -14,6 +14,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\YoutubeAccount');
     }
+
+    public function wachedVideos(){
+        return $this->hasMany("App\WachedVideo");
+    }
     /**
      * The attributes that are mass assignable.
      *

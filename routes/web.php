@@ -41,4 +41,6 @@ Route::post('/registedaccount/regist', 'RegistedAccountController@regist')->name
 
 Route::get('/showaccountlist','ShowAccountListController@index')->name("showaccountlist");
 
+Route::post("/showvideo","ShowVideoController@index")->name("showvideo");
+
 

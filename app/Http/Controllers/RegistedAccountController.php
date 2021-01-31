@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\WatchedVideo;
 use App\YoutubeVideo;
-
 use App\YoutubeAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +41,7 @@ class RegistedAccountController extends Controller
         return view("registedaccount",compact('title','thumbnailsUrl','playlist','channelId'));
     }
     public function regist(Request $request){
+        //チャンネル保存
         $youtubeAccount=new YoutubeAccount();
         $youtubeAccount->firstOrCreate(
             ["account_id"=>$request->input("accountId")
@@ -56,7 +56,7 @@ class RegistedAccountController extends Controller
 
 
         $contents=$this->getPlaylstItems($request->input("playlist"));
-
+        //チャンネル動画保存
         foreach($contents as $content){
             $youtbeVideo=new YoutubeVideo();
             $youtbeVideo->firstOrCreate([
@@ -69,6 +69,17 @@ class RegistedAccountController extends Controller
                 ]
             );
         }
+        //チャンネル視聴記録テーブル確保
+        foreach($contents as $content){
+            $watchedVideo=new WatchedVideo();
+            $watchedVideo->firstOrCreate([
+                "video_id"=>$content["snippet"]["resourceId"]["videoId"],
+                ],
+                ["playlist"=>$request->input("playlist"),
+                "user_id"=>Auth::id(),
+                ]
+            );
+        }exit();
         return redirect("showaccountlist");
     }
 
