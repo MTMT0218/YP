@@ -19,8 +19,8 @@ class CreateWatchedVideos extends Migration
             $table->string('playlist')->references('playlist')->on('youtube_accounts');
             $table->string("video_id")->references("video_id")->on("youtube_videos");
             $table->bigInteger('user_id')->references('id')->on('users');
-            $table->time("wached_at")->default("00:00:00");
-            $table->integer("wached_flag")->default(0);
+            $table->time("watched_at")->default("00:00:00");
+            $table->integer("watched_flag")->default(0);
         });
     }
 

@@ -10,7 +10,7 @@ class YoutubeVideo extends Model
 
     public function watchedVideos()
     {
-      return $this->hasMany('App\WatchedVideo',"video_id","video_id");
+      return $this->hasOne('App\WatchedVideo',"video_id","video_id");
     }
 
 }
