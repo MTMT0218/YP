@@ -1,26 +1,6 @@
 
 
 @extends('layouts.header')
-@section('js')
-<script>
-    (function() {
-      window.addEventListener("load", function () {
-        $('[data-toggle="popover"]').popover();
-      });
-    })();
-    </script>
-    <script type="text/javascript" src="js/jquery.matchHeight.js"></script>
-
-<script type="text/javascript">
-          $(function(){
-            $('.js-matchHeigtht').matchHeight();
-          });
-</script>
-    <style>
-
-    </style>
-
-@endsection
 @section('main')
 <div class="container">
     <div class="row justify-content-center">

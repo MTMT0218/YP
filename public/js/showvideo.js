@@ -1,27 +1,4 @@
 
-
-@extends('layouts.header')
-
-@section('main')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card ">
-                <div class="card-header ">{{ __('動画表示') }}</div>
-                <div class="card-body">
-                <div class="card embed-responsive embed-responsive-16by9" >
-                    <iframe class="video embed-responsive-item " id="player"
-                    src="https://www.youtube.com/embed/{{$video_id}}?enablejsapi=1">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@endsection
-@section('js')
-<script>
 //api用のJSを読み込む
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -41,7 +18,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       var Ready = false;
       var status="-1";
       var currentTime="";
-      var video_id="{{$video_id}}";
+      var video_id="{{$video_id}}}";
       function onPlayerReady(event) {
           Ready = true;
       }
@@ -68,5 +45,29 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
                         }
         })
     }
-</script>
-@endsection
+
+     /* $(function() {
+        function checkReady () {
+            if(!Ready) {
+            setTimeout(checkReady, 200);
+        }}
+        checkReady();
+        $('#play').on('click', function() {
+        $.ajax({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/getwatchinginformation",
+            type: 'POST',
+            data: {'user_id':"test"},
+            success: function(){
+                console.log(currentTime);
+              },
+            error: function(){
+                console.log("y");//通信が失敗した場合の処理
+            }
+        })
+
+    });
+    });*/
+

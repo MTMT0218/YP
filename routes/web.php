@@ -43,4 +43,5 @@ Route::get('/showaccountlist','ShowAccountListController@index')->name("showacco
 
 Route::post("/showvideo","ShowVideoController@index")->name("showvideo");
 
+Route::post("/getwatchinginformation","GetWatchingInformationController@index")->name("getwatchinginformation");
 
