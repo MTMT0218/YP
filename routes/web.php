@@ -11,14 +11,12 @@
 |
 */
 use App\Http\Controllers\ViewController;
+
+
 /*
 Route::get('/', function () {
     return view('welcome');
 });*/
-
-Route::get('/', function () {
-    return view('home');
-})->name("home");
 
 Route::get('/view',"ViewController@index")->name("view");
 
@@ -27,6 +25,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LogoutController@index')->name('logout');
+
 
 Route::get('/searchyoutube', 'SearchYoutubeController@index')->name("searchYoutube");
 
