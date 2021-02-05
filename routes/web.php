@@ -45,3 +45,4 @@ Route::post("/showvideo","ShowVideoController@index")->name("showvideo");
 
 Route::post("/getwatchinginformation","GetWatchingInformationController@index")->name("getwatchinginformation");
 
+Route::get("updatechannnel","UpdateChannelController@index")->name("updatechannnel");

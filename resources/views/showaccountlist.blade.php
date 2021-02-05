@@ -6,7 +6,11 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-4 ">
-                <div class="card-header ">{{ __('チャンネル一覧') }}</div>
+                <div class="card-header d-flex ">
+                    <div class="mr-auto">{{ __('チャンネル一覧') }}</div>
+                    <a href="{{route('updatechannnel')}}"class="btn  btn-outline-primary ">{{_('更新')}}</a>
+                    <a href="{{route('updatechannnel')}}" type="button" class="btn  btn-outline-primary " >{{_('削除')}}</a>
+                </div>
                 <div class="card-body">
                     @isset($youtube_accounts)
                         <div  class="row">
@@ -58,6 +62,8 @@
                     @endisset
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>

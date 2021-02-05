@@ -20,7 +20,7 @@ class ShowAccountListController extends Controller
         $youtubeAccount=new YoutubeAccount;
         $user=new User();
         $user_id=Auth::id();
-
+        //ユーザの登録チャンネル及びアップロード動画確保
         $userData=$user ->with(['youtubeAccounts.youtubeVideos.watchedVideos'=> function ($query) {
             $query->where('user_id',Auth::id());
         }])->where('id',$user_id)->first()->toArray();
@@ -39,6 +39,11 @@ class ShowAccountListController extends Controller
 
         }
         return view("showaccountlist",$userData);
+
+    }
+
+    public function update(){
+
 
     }
 }
