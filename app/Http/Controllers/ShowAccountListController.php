@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Module\YoutubeChannel;
 
 class ShowAccountListController extends Controller
 {
@@ -17,6 +17,7 @@ class ShowAccountListController extends Controller
     }
 
     public function index(){
+        YoutubeChannel::update();
         $youtubeAccount=new YoutubeAccount;
         $user=new User();
         $user_id=Auth::id();
