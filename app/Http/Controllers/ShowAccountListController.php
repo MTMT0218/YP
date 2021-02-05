@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ShowAccountListController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $youtubeAccount=new YoutubeAccount;
         $user=new User();

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use App\file;
 class GetWatchingInformationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
    public function index(Request $request){
     //ビデオID
     $videoId=$request["video_id"];

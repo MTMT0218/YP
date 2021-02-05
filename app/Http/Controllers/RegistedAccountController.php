@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RegistedAccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
 
     return view("registedaccount");
@@ -79,7 +83,7 @@ class RegistedAccountController extends Controller
                 "user_id"=>Auth::id(),
                 ]
             );
-        }exit();
+        };
         return redirect("showaccountlist");
     }
 
