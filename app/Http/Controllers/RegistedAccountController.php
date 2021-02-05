@@ -45,6 +45,7 @@ class RegistedAccountController extends Controller
     }
     public function regist(Request $request){
         $youtubeApi=new YoutubeApi();
+        $playlist=$request->input("playlist");
         //チャンネル保存
         $youtubeAccount=new YoutubeAccount();
         $youtubeAccount->firstOrCreate(
@@ -52,38 +53,20 @@ class RegistedAccountController extends Controller
             ],
             ["title"=>$request->input("title"),
             "thumbnails_url"=>$request->input("thumbnailsUrl"),
-            "playlist"=>$request->input("playlist"),
+            "playlist"=>$playlist,
             "user_id"=>Auth::id()
             ]
         );
 
 
-
-        $contents=$youtubeApi->getPlaylstItems($request->input("playlist"));
+        //APIからチャンネルのプレイリストアイテム取得
+        $contents=$youtubeApi->getPlaylstItems($playlist);
         //チャンネル動画保存
-        foreach($contents as $content){
-            $youtbeVideo=new YoutubeVideo();
-            $youtbeVideo->firstOrCreate([
-                "video_id"=>$content["snippet"]["resourceId"]["videoId"],
-                ],
-                ["thumbnails_url"=>$content["snippet"]["thumbnails"]["high"]["url"],
-                "title"=>$content["snippet"]["title"],
-                "published_at"=>$content["snippet"]["publishedAt"],
-                "playlist"=>$request->input("playlist"),
-                ]
-            );
-        }
-        //チャンネル視聴記録テーブル確保
-        foreach($contents as $content){
-            $watchedVideo=new WatchedVideo();
-            $watchedVideo->firstOrCreate([
-                "video_id"=>$content["snippet"]["resourceId"]["videoId"],
-                ],
-                ["playlist"=>$request->input("playlist"),
-                "user_id"=>Auth::id(),
-                ]
-            );
-        };
+        $youtbeVideo=new YoutubeVideo();
+        $youtbeVideo->regist($contents,$playlist);
+         //チャンネル視聴記録テーブル確保
+        $watchedVideo=new WatchedVideo();
+        $watchedVideo->initialize($contents,$playlist);
         return redirect("showaccountlist");
     }
 
