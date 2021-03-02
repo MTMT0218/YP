@@ -14,9 +14,10 @@ class WatchedVideo extends Model
         foreach($contents as $content){
             $this->firstOrCreate([
                 "video_id"=>$content["snippet"]["resourceId"]["videoId"],
+                "user_id"=>Auth::id(),
                 ],
                 ["playlist"=>$playlist,
-                "user_id"=>Auth::id(),
+
                 ]
             );
         };

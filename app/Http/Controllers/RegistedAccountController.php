@@ -8,6 +8,8 @@ use App\YoutubeAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Module\YoutubeApi;
+use App\User;
+
 
 class RegistedAccountController extends Controller
 {
@@ -47,17 +49,19 @@ class RegistedAccountController extends Controller
         $youtubeApi=new YoutubeApi();
         $playlist=$request->input("playlist");
         //チャンネル保存
-        $youtubeAccount=new YoutubeAccount();
-        $youtubeAccount->firstOrCreate(
-            ["account_id"=>$request->input("accountId")
-            ],
-            ["title"=>$request->input("title"),
+        $user =new User();
+        $youtubeAccounts=new YoutubeAccount();
+        // チャンネルがDBに無ければ保存
+        $youtubeAccounts->firstOrCreate(
+            ["account_id"=>$request->input("accountId"),
+            "title"=>$request->input("title"),
             "thumbnails_url"=>$request->input("thumbnailsUrl"),
             "playlist"=>$playlist,
-            "user_id"=>Auth::id()
             ]
         );
-
+        //チャンネルのIDよりUserと紐づけ
+        $youtubeAccountsId=$youtubeAccounts->where("account_id",$request->input("accountId"))->value('id');
+        $user->find(Auth::id())->youtubeAccounts()->attach($youtubeAccountsId);
 
         //APIからチャンネルのプレイリストアイテム取得
         $contents=$youtubeApi->getPlaylstItems($playlist);

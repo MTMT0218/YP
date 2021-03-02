@@ -16,7 +16,6 @@ class CreateYoutubeAccountsTable extends Migration
         Schema::create('youtube_accounts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->bigInteger('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('thumbnails_url');
             $table->string('playlist');

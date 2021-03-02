@@ -41,12 +41,15 @@ class YoutubeApi{
     public function getJson($data,$url){
         //URL エンコードされたクエリ文字列を生成
         $query=http_build_query($data);
+
         //URL情報取得
-        $response = file_get_contents($url."?".$query);
-        //json文字列デコード
+        if($response = file_get_contents($url."?".$query)){
+
+            //json文字列デコード
         $contents = json_decode($response, true);
         return $contents;
-    }
+        }
 
-}
+
+    }    }
 ?>

@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
     public function youtubeAccounts()
     {
-      return $this->hasMany('App\YoutubeAccount');
+      return $this->belongsToMany('App\YoutubeAccount',"user_youtubeaccount","user_id","account_id");
     }
 
     public function wachedVideos(){
@@ -44,10 +44,4 @@ class User extends Authenticatable
     /*protected $casts = [
         'email_verified_at' => 'datetime',
     ];*/
-    public function gets($user_id)
-    {
-        return DB::table('users')->find("1");
-
-    }
-
 }

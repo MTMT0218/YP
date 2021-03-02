@@ -8,6 +8,7 @@
                     <h5 class="card-title">YOUTUBBE埋め込み表示</h5>
                     <p class="card-text">
                         <form method="get" action="{{ route('view') }}">
+                            @csrf
                             <div class="form-group">
                                 <div class="col-12">
                                     <label class="mt-4">URL：</label>

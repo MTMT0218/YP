@@ -22,6 +22,8 @@ Route::get('/view',"ViewController@index")->name("view");
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', 'Auth\LogoutController@index')->name('logout');
@@ -45,3 +47,5 @@ Route::post("/showvideo","ShowVideoController@index")->name("showvideo");
 Route::post("/getwatchinginformation","GetWatchingInformationController@index")->name("getwatchinginformation");
 
 Route::get("updatechannnel","UpdateChannelController@index")->name("updatechannnel");
+
+Route::post("deletechannel","DeleteChannelController@index")->name("deletechannel");

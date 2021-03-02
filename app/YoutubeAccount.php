@@ -10,9 +10,9 @@ class YoutubeAccount extends Model
 
     protected $guarded = [];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsToMany('App\User',"user_youtubeaccount","account_id","user_id");
     }
 
     public function youtubeVideos()
@@ -20,10 +20,10 @@ class YoutubeAccount extends Model
       return $this->hasMany('App\YoutubeVideo',"playlist","playlist");
     }
 
-    public function getYoutubeAccounts($user_id){
+    public function getYoutubeChannels($channel_id){
         return DB::table('youtube_accounts')
-        ->where("user_id",$user_id)
-        ->get();
+        ->where("account_id",$channel_id)
+        ->first();
     }
 
 }
